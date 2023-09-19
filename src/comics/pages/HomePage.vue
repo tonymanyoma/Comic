@@ -3,5 +3,7 @@
 </script>
 
 <template>
-<h1>holi</h1>
+
+    <h1>Home page</h1>
+
 </template>
