@@ -1,26 +1,39 @@
 <script stup lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed, onMounted , ref} from 'vue';
 import type { Comic } from '../interfaces/comic';
 import { getComic } from '../services/comicService';
 import StarRating from '../components/StarRating.vue';
+import { useRatingStore } from '../../stores/ratingStore';
 
 export default defineComponent({
-  data() {
+  components: {
+    StarRating
+  },
+  setup() {
+    const ratingStore = useRatingStore();
+
+    // Propiedad computada para obtener el rating actual
+    const currentRating = computed(() => ratingStore.rating);
+
+    const comic = ref<Comic | null>(null);
+  
+    onMounted(async () => {
+      try {
+        const id = Math.floor(Math.random() * 2830) + 1;
+        comic.value = await getComic(id);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+
     return {
-      comic: null as Comic | null,
+      currentRating,
+      comic
     };
   },
-  async mounted() {
-    try {
-      const id = Math.floor(Math.random() * 2830) + 1;
-      this.comic = await getComic(id);
-    }
-    catch (error) {
-      console.error(error);
-    }
-  },
-  components: { StarRating }
 });
+
 
 
 
@@ -33,9 +46,13 @@ export default defineComponent({
     <div class="home_page__img_container">
       <img :src="comic?.img" class="home_page__img_container--img"/>
     </div>
-
+  
     <div class="home_page__rating">
       <StarRating />
+    </div>
+
+    <div class="home_page__current_rating">
+      <h3>{{ currentRating }}</h3>
     </div>
   </div>
 </template>

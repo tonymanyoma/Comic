@@ -22,6 +22,10 @@
         display: flex;
         justify-content: center;
     }
+
+    @include e(current_rating){
+        text-align: center;
+    }
 }
 
 

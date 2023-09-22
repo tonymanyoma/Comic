@@ -7,7 +7,8 @@
   
   const ratingStore = useRatingStore();
   
-  const rating = ref(0)
+  // const rating = ref(0)
+  var rating = ref(0)
   
   </script>
   
@@ -16,9 +17,9 @@
     :numberOfStars="5"
     :starSize="40"
     :step="1"
-    v-model="rating"
+    v-model="ratingStore.rating"
     :clearable="true"
-    @click="ratingStore.setRating(rating)"
+    @click="ratingStore.setRating(ratingStore.rating)"
     />
   </template>
   
