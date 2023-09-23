@@ -1,0 +1,23 @@
+.star_rating {
+    display: flex;
+    font-size: 0;
+    user-select: none;
+    
+    @include e(star){
+        font-size: 3rem;
+        color: gray;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+        margin: 0 0.1rem;
+    }
+
+    @include e(filled){
+        color: gold;
+    }
+
+    @include e(hovered){
+        color: gold;
+    }
+
+  }
+  

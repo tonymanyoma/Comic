@@ -34,10 +34,6 @@ export default defineComponent({
   },
 });
 
-
-
-
-
 </script>
 
 <template>
@@ -51,23 +47,9 @@ export default defineComponent({
       <StarRating />
     </div>
 
-    <div class="home_page__current_rating">
-      <h3>{{ currentRating }}</h3>
-    </div>
   </div>
 </template>
 
 <style scoped>
-.image {
-  width: 80%;
-}
 
-.title {
-  text-align: center;
-}
-
-.centered-container {
-  display: flex;
-  justify-content: center;
-}
 </style>
